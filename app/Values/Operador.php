@@ -6,6 +6,7 @@ use App\Estrategia\Operaciones\Subs;
 use App\Estrategia\Operaciones\Add;
 use App\Estrategia\Operaciones\Mult;
 use App\Estrategia\Operaciones\NotFound;
+use App\Estrategia\Operaciones\Divide;
 
 final class Operador
 {
@@ -13,7 +14,7 @@ final class Operador
         'S' => Add::class,
         'R' => Subs::class,
         'M' => Mult::class,
-        'D' => Divide::class,
+        'F' => Divide::class,
     ];
 
     static function getStrategy($value)

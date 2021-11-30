@@ -29,7 +29,7 @@ class Operaciones extends Conversation
                 Button::create('suma')->value('S'),
                 Button::create('resta')->value('R'),
                 Button::create('multiplicacion')->value('M'),
-                Button::create('division')->value('D'),
+                Button::create('division')->value('F'),
             ]);
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
