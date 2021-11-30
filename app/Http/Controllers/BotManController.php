@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use BotMan\BotMan\BotMan;
 use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
+use App\Conversations\Operaciones;
 
 class BotManController extends Controller
 {
@@ -41,7 +42,6 @@ class BotManController extends Controller
      */
     public function startOperaciones(BotMan $bot)
     {
-        $bot->startConversation(new ExampleConversation());
+        $bot->startConversation(new Operaciones());
     }
-    
 }
