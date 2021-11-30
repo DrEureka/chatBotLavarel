@@ -2,7 +2,7 @@
 
 namespace App\Estrategia\Operaciones;
 
-class Add implements Estrategia
+class Add implements Estrategias
 {
 
     public function process()

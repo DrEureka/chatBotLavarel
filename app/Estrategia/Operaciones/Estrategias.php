@@ -2,6 +2,7 @@
 
 namespace App\Estrategia\Operaciones;
 
-interface Estrategia{
+interface Estrategias
+{
     public function process();
 }

@@ -2,6 +2,7 @@
 
 namespace App\Conversations;
 
+use App\Values\Operador;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;
@@ -32,6 +33,8 @@ class Operaciones extends Conversation
             ]);
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
+                $content = Operador::getStrategy($answer->getValue());
+                $this->say((new $content)->process());
             }
         });
     }
