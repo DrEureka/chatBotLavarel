@@ -9,3 +9,4 @@ $botman->hears('Hi|hola', function ($bot) {
     $bot->reply('Hello!/ Hola como estas');
 });
 $botman->hears('conversar', BotManController::class . '@startConversation');
+$botman->hears('matematicas', BotManController::class . '@startOperaciones');
