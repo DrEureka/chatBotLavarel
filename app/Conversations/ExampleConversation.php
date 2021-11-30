@@ -30,6 +30,7 @@ class ExampleConversation extends Conversation
                     $this->say($joke->value->joke);
                 } else {
                     $this->say(Inspiring::quote());
+                    
                 }
             }
         });
