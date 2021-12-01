@@ -5,14 +5,12 @@ namespace App\Estrategia\Interactivo;
 use App\InteractiveData;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
+use App\Conversations\Interactivo;
 
 class Question extends Conversation implements Estrategias
 {
-    public function process()
-    {
-        return 'Para registrar un incidente es necesario ingresar unos datos:';
-    }
-
+// "use regresar o salir, busca el arhcivo php y hace la pregunta cuando es si vuelve a iniciar la conversacion.
+use ReturnOrExit;
     public function run()
     {
         $this->askName(new InteractiveData());
@@ -20,7 +18,8 @@ class Question extends Conversation implements Estrategias
     //Captura nombre
     private function askName(InteractiveData $param)
     {
-        $this->ask("Cual es tu nombre?", function (Answer $answer) use ($param) {
+        $this->ask('Para registrar un incidente es necesario ingresar unos datos: ' .
+            'Cual es tu nombre?', function (Answer $answer) use ($param) {
             $param->name = $answer->getText();
             if (trim($param->name) == '') {
                 $this->askName($param);
@@ -86,5 +85,7 @@ class Question extends Conversation implements Estrategias
             $param->save();
         }
         $this->say("Mucho gusto " . $param->name . ' ' . $param->lastname . ' Su EQ' . $param->address . ' y su correo de contacto es: ' . $param->email . ' Su mensaje fue enviado exitosamente a nuestro sistema de soporte');
+        //llama al return y hace la consulta en la clase interactivo
+        $this->returnOrExit(Interactivo::class);
     }
 }
