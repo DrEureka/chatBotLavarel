@@ -2,6 +2,7 @@
 
 namespace App\Conversations;
 
+use App\Values\Interactive;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 use BotMan\BotMan\Messages\Outgoing\Question;
@@ -32,7 +33,7 @@ class Interactivo extends Conversation
             ]);
         return $this->ask($question, function (Answer $answer) {
             if ($answer->isInteractiveMessageReply()) {
-                $content = Interactivo::getStrategy($answer->getValue());
+                $content = Interactive::getStrategy($answer->getValue());
                 $this->getBot()->startConversation(new $content());
             }
         });

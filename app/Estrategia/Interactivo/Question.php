@@ -1,13 +1,18 @@
 <?php
 
-namespace App\Estrategias\Interactivo;
+namespace App\Estrategia\Interactivo;
 
 use App\InteractiveData;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Incoming\Answer;
 
-class Question extends Conversation implements Estrategia
+class Question extends Conversation implements Estrategias
 {
+    public function process()
+    {
+        return 'Para registrar un incidente es necesario ingresar unos datos:';
+    }
+
     public function run()
     {
         $this->askName(new InteractiveData());
@@ -57,18 +62,18 @@ class Question extends Conversation implements Estrategia
             if (!filter_var($param->email, FILTER_VALIDATE_EMAIL)) {
                 $this->askEmail($param);
             } else {
-                $this->askTexto($param);
+                $this->askText($param);
             }
         });
     }
 
     //Ingresa texto del problema y captura
-    private function askTexto(InteractiveData $param)
+    private function askText(InteractiveData $param)
     {
         $this->ask("Cual es el problema?", function (Answer $answer) use ($param) {
-            $param->texto = $answer->getText();
-            if (trim($param->texto) == '') {
-                $this->askTexto($param);
+            $param->text = $answer->getText();
+            if (trim($param->text) == '') {
+                $this->askText($param);
             } else {
                 $this->finish($param);
             }
@@ -80,6 +85,6 @@ class Question extends Conversation implements Estrategia
         if (InteractiveData::query()->where('email', '=', $param->email)->count() == 0) {
             $param->save();
         }
-        $this->say("Mucho gusto" . $param->name . ' ' . $param->lastname . ' Su EQ' . $param->address . ' y su correo de contacto es: ' . $param->email . 'Se mensaje fue enviado exitosamente a nuestro sistema de soporte');
+        $this->say("Mucho gusto " . $param->name . ' ' . $param->lastname . ' Su EQ' . $param->address . ' y su correo de contacto es: ' . $param->email . ' Su mensaje fue enviado exitosamente a nuestro sistema de soporte');
     }
 }

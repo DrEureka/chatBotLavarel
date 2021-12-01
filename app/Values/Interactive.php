@@ -2,11 +2,11 @@
 
 namespace App\Values;
 
-use App\Estrategias\Interactivo\Mp4;
-use App\Estrategias\Interactivo\Question;
-use App\Estrategias\Interactivo\Validate;
-use App\Estrategias\Interactivo\Img;
-use App\Estrategias\Interactivo\NotFound;
+use App\Estrategia\Interactivo\Mp4;
+use App\Estrategia\Interactivo\Question;
+use App\Estrategia\Interactivo\Validate;
+use App\Estrategia\Interactivo\Img;
+use App\Estrategia\Interactivo\NotFound;
 
 final class Interactive
 {

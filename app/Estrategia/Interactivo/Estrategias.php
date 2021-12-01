@@ -1,13 +1,12 @@
 <?php
 
 
-namespace App\Estrategias\Interactivo;
+namespace App\Estrategia\Interactivo;
 
 
 
-interface Estrategia
+interface Estrategias
 {
 
     public function run();
-    
 }

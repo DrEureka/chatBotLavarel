@@ -1,11 +1,13 @@
 <?php
 
-namespace App\Estrategias\Interactivo;
+namespace App\Estrategia\Interactivo;
 
 use BotMan\BotMan\Messages\Conversations\Conversation;
 
-class Validate extends Conversation implements Estrategia
+class Validate extends Conversation implements Estrategias
 {
+    
+
     public function run()
     {
         $this->ask('Escribe lo que queres saber, Hora o Fecha?', [

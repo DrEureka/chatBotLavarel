@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Estrategias\Interactivo;
+namespace App\Estrategia\Interactivo;
 
 use BotMan\BotMan\Messages\Attachments\Video;
 use BotMan\BotMan\Messages\Conversations\Conversation;
 use BotMan\BotMan\Messages\Outgoing\OutgoingMessage;
 
-class Mp4 extends Conversation implements Estrategia
+class Mp4 extends Conversation implements Estrategias
 {
     public function run()
     {
