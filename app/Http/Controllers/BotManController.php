@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use BotMan\BotMan\BotMan;
 use Illuminate\Http\Request;
 use App\Conversations\ExampleConversation;
+use App\Conversations\Interactivo;
 use App\Conversations\Operaciones;
 
 class BotManController extends Controller
@@ -44,4 +45,14 @@ class BotManController extends Controller
     {
         $bot->startConversation(new Operaciones());
     }
+
+      /**
+     * Loaded through routes/botman.php
+     * @param  BotMan $bot
+     */
+    public function startInteractivo(BotMan $bot)
+    {
+        $bot->startConversation(new Interactivo());
+    }
+
 }
